@@ -30,7 +30,7 @@ Generally, more flexible methods are know for having lower bias and higher varia
 
 (d) The variance of the error terms, i.e. $\sigma^{2} = Var(\epsilon)$ is extremely high.
 
-**Awnser**: In this case, with a higher base variance, our models with higher flexibility would probably *overfit* our training data, so a **less flexible approach** would be my choice here.
+**Answer**: In this case, with a higher base variance, our models with higher flexibility would probably *overfit* our training data, so a **less flexible approach** would be my choice here.
 
 ## Exercise 2
 
@@ -110,57 +110,46 @@ You will now think of some real-life applications for statistical learning.
 
 What are the advantages and disadvantages of a very flexible (versus a less  flexible) approach for regression or classification? Under what circumstances might a more flexible approach be preferred to a less flexible approach? When might a less flexible approach be preferred?
 
-**Answer**: For regression:
+**Answer**:
 
-- More flexible method
+Using a more flexible method:
 
-    -
+- The advantage of a more flexible method on regression is that we can go beyond linearity in some cases, and fit better in the data.
+- We want to use those methods when relations between features are more unclear, and we have a larger data set, so the model will learn best from the data and be less sensible to noise/error in the data.
+- Usually are non-parametric, so they don't make assumptions on the data shape.
+- Usually have low bias.
+- Tend to *overfit* the data more easily than less flexible methods.
+- Those methods are also harder to train, take longer to train and are more computationally expensive.
+- Low interpretability.
 
-- Less flexible method
+Using a less flexible method
 
-    -
+- The advantage of a less flexible method on regression is that we can perform better if we have a smaller data set.
+- This is mainly because less flexible methods are parametric and imply some conditions on the data shape (regression) or distribution (classification) and follow those conditions, just adjusting parameters.
+- Usually have a higher bias.
+- Usually have a lower variance.
+- Faster and easier to train, with low computational cost.
+- Higher interpretability.
+- Tend to *underfit* the data more easily than less flexible methods.
 
-For classification:
+When to use each one
 
-- More flexible method
-
-    -
-
-- Less flexible method
-
-    -
+- We'll prefer a more flexible approach when we have nonlinear relationships between data points, larger sample size and smaller number of predictors.
+- We'll prefer a less flexible approach when we have high variance in error terms, large number of predictors and a smaller sample size.
 
 ## Exercise 6
 
-Describe the differences between a parametric and a non-parametric
-statistical learning approach. What are the advantages of a parametric
-approach to regression or classification (as opposed to a nonparametric
-approach)? What are its disadvantages?
+Describe the differences between a parametric and a non-parametric statistical learning approach. What are the advantages of a parametric approach to regression or classification (as opposed to a nonparametric approach)? What are its disadvantages?
 
-**Answer**: For regression:
+**Answer**:
 
-- Parametric
+Parametric methods usually are less flexible and usually makes some assumptions on the data shape or distribution (reg/class). This type of method has higher bias and smaller variance, which makes it more suitable for cases when we have a smaller data set. They're also more explainable than the non-parametric methods. Although they can be used for predicting as well, they're very good techniques for inferring on the data. Usually they're more robust as well, being less misguided by noise on the data.
 
-    -
-
-- Non-parametric
-
-    -
-
-For classification:
-
-- Parametric
-
-    -
-
-- Non-parametric
-
-    -
+Non-parametric methods usually are more flexible since they don't make any assumptions on the data shape or distribution. They usually are more flexible and present higher variance, with lower bias. They're more suitable for larger data sets where the relationship between the features is hard to see just analyzing. They're very good for making predictions, but very hard to explain, making them not so useful for inferring.
 
 ## Exercise 7
 
-The table below provides a training data set containing six observations,
-three predictors, and one qualitative response variable.
+The table below provides a training data set containing six observations, three predictors, and one qualitative response variable.
 
 |Obs.|$X_{1}$|$X_{2}$|$X_{3}$|$Y$|
 |:-:|:-:|:-:|:-:|:-:|
@@ -169,16 +158,45 @@ three predictors, and one qualitative response variable.
 |3|0|1|3|Red|
 |4|0|1|2|Green|
 |5|-1|0|1|Green|
-|6|1|1|2|Red|
+|6|1|1|1|Red|
 
-Suppose we wish to use this data set to make a prediction for Y when X1 = X2 = X3 = 0 using K-nearest neighbors.
+Suppose we wish to use this data set to make a prediction for $Y$ when $X_{1} = X_{2} = X_{3} = 0$ using K-nearest neighbors.
 
-(a) Compute the Euclidean distance between each observation and the test point, X1 = X2 = X3 = 0.
+(a) Compute the Euclidean distance between each observation and the test point, $X_{1} = X_{2} = X_{3} = 0$.
+
+**Answer**:
+
+Observation 1: $\sqrt{(0 - 0)^2 + (0 - 3)^2 + (0 - 0)^2}$ = $\sqrt{3^2} = 3$
+
+Observation 2: $\sqrt{(0 - 2)^2 + (0 - 0)^2 + (0 - 0)^2}$ = $\sqrt{2^2} = 2$
+
+Observation 3: $\sqrt{(0 - 0)^2 + (0 - 1)^2 + (0 - 3)^2}$ = $\sqrt{10} \approx 3.16$
+
+Observation 4: $\sqrt{(0 - 0)^2 + (0 - 1)^2 + (0 - 2)^2}$ = $\sqrt{5} \approx 2.23$
+
+Observation 5: $\sqrt{(0 - (-1))^2 + (0 - 0)^2 + (0 - 1)^2}$ = $\sqrt{2} \approx 1.41$
+
+Observation 6: $\sqrt{(0 - 1)^2 + (0 - 1)^2 + (0 - 1)^2}$ = $\sqrt{3} \approx 1.73$
+
+|Obs.|$X_{1}$|$X_{2}$|$X_{3}$|$Y$|Distance|
+|:-:|:-:|:-:|:-:|:-:|:-:|
+|1|0|3|0|Red|3|
+|2|2|0|0|Red|2|
+|3|0|1|3|Red|3.16|
+|4|0|1|2|Green|2.23|
+|5|-1|0|1|Green|1.41|
+|6|1|1|1|Red|1.73|
 
 (b) What is our prediction with K = 1? Why?
 
+**Answer**: With $K = 1$ our prediction is Green, which is the 5th observation, being the closest point to our (0,0,0) point.
+
 (c) What is our prediction with K = 3? Why?
+
+**Answer**: For $K = 3$, we'll need the 3 closest points, which have the distances and labels as follows: ($1.41$, Green), ($1.73$, Red), ($2$, Red). So we have 2 Red labels and 1 Green label. So our prediction is Red.
 
 (d) If the Bayes decision boundary in this problem is highly nonlinear,
 then would we expect the best value for K to be large or
 small? Why?
+
+**Answer**: If the Bayes's decision boundary is highly nonlinear, we **expect the best value of K to be smaller**, so it fits best the characteristics of a nonlinear decision boundary, since larger values of K usually lead to a more smoothened decision boundary, kind of "ignoring" the nonlinearity. Refer to figure 2.16 on the book for a visualization.
