@@ -13,10 +13,21 @@ Describe the null hypotheses to which the p-values given in Table 3.4 correspond
 |`radio`|0.189|0.0086|21.89|< 0.0001|
 |`newspaper`|-0.001|0.0059|-0.18|0.8599|
 
+Recalling what a p-value is: *"A p-value measures the probability of obtaining the observed results, assuming that the null hypothesis is true. The lower the p-value, the greater the statistical significance of the observed difference. A p-value of 0.05 or lower is generally considered statistically significant"*.
+
+The null hypothesis for this case is: $H_{0}$: There is no relationship between X and Y. In this case, when the p-values are all less than 0.05, it means that we can reject the null hypothesis. On the other hand, the alternative hypothesis is: $H_{a}$: There is a relationship between X and Y. If $f$ can be approximated bby a linear function of the form $Y = \beta_{0} + \beta_{1}X_{1} + \epsilon$, then the hypothesis can be be rewritten as $H_{0}$: $\beta_{1} = 0$ and $H_{a}$: $\beta_{1} \neq 0$, where $\beta_{1}$ is the coefficient of the predictor variable $X_{1}$.
+
+Analyzing the provided table, where we were given the p-values for the coefficients of the linear model, we can conclude that the `TV` and `radio` predictors are statistically significant, as their p-values are less than 0.05. This means that we can reject the null hypothesis that there is no relationship between the `TV` and `radio` predictors and the `sales` response. This means that **for every thousand units** increase in the `TV` and `radio` predictors, the `sales` response will increase by 46 and 189 units, respectively.
+
+On the other hand, the `newspaper` predictor is not statistically significant, as its p-value is greater than 0.05. This means that we cannot reject the null hypothesis that there is no relationship between the `newspaper` predictor and the `sales` response. This means that the `newspaper` predictor does not have a significant impact on the `sales` response, and each unit increase in the `newspaper` predictor will not have a significant impact on the `sales` response.
+
 ## Exercise 2
 
-Carefully explain the differences between the KNN classifier and KNN
-regression methods.
+Carefully explain the differences between the KNN classifier and KNN regression methods.
+
+
+
+
 
 ## Exercise 3
 
